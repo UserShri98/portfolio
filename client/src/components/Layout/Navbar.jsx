@@ -43,7 +43,7 @@ export default function Navbar() {
                     whileHover={{ scale: 1.05 }}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
-                    NP<span className="text-accent-primary group-hover:animate-pulse">.</span>
+                    sc.<span className="text-accent-primary group-hover:animate-pulse">.</span>
                 </motion.div>
 
                 {/* Aesthetic Links */}

@@ -97,7 +97,7 @@ export default function About() {
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
                     >
-                        I’m <span className="text-white font-medium">Nivesh Pole</span>, a passionate Full Stack Developer focused on building <span className="text-white font-medium">scalable, user-friendly</span> web applications using the MERN stack. I enjoy turning complex problems into clean, functional interfaces and reliable backend systems.
+                        I’m <span className="text-white font-medium">Shrinath Chikodikar</span>, a passionate Full Stack Developer focused on building <span className="text-white font-medium">scalable, user-friendly</span> web applications using the MERN stack. I enjoy turning complex problems into clean, functional interfaces and reliable backend systems.
                     </motion.p>
 
                     <motion.div
