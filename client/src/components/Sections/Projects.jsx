@@ -1,62 +1,69 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 
-const projects =[
-  {
-    id: 1,
-    title: "User Management System",
-    category: "Full Stack",
-    description: "Secure system with authentication, role-based access, and full CRUD operations for managing users efficiently.",
-    tech: ["React", "Node.js", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070",
-    color: "#fbbf24"
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    category: "Web App",
-    description: "Create, update, delete, and track tasks with a clean UI and REST API integration.",
-    tech: ["React", "Express", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2064",
-    color: "#94a3b8"
-  },
-  {
-    id: 3,
-    title: "Quiz Application",
-    category: "Frontend + Backend",
-    description: "Interactive quiz platform with dynamic questions, scoring system, and backend data handling.",
-    tech: ["React", "Node.js", "MySQL"],
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072",
-    color: "#fbbf24"
-  },
-  {
-    id: 4,
-    title: "Chatbot Frontend",
-    category: "Frontend",
-    description: "AI chatbot interface with smooth UI, API-based message handling, and responsive design.",
-    tech: ["React", "Tailwind", "APIs"],
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2070",
-    color: "#64748b"
-  },
-  {
-    id: 5,
-    title: "E-Commerce Platform",
-    category: "Full Stack",
-    description: "Product listing, cart management, authentication, and order workflow system.",
-    tech: ["React", "Node.js", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1639322537228-ad7117a3a63b?auto=format&fit=crop&q=80&w=2070",
-    color: "#fbbf24"
-  },
-  {
-    id: 6,
-    title: "Dreams",
-    category: "AI Art",
-    description: "Platform for training and minting AI-generated art models on the edge, seamlessly integrated with IPFS.",
-    tech: ["Stable", "WebGL", "Node"],
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1965",
-    color: "#94a3b8"
-  }
+const projects = [
+    {
+        id: 1,
+        title: "User Management System",
+        category: "Full Stack",
+        description: "Secure system with authentication, role-based access, and full CRUD operations for managing users efficiently.",
+        tech: ["React", "Node.js", "MongoDB"],
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070",
+        color: "#fbbf24",
+        liveUrl: "https://github.com/NiveshPole18"
+    },
+    {
+        id: 2,
+        title: "Task Management App",
+        category: "Web App",
+        description: "Create, update, delete, and track tasks with a clean UI and REST API integration.",
+        tech: ["React", "Express", "MongoDB"],
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2064",
+        color: "#94a3b8",
+        liveUrl: "https://github.com/NiveshPole18"
+    },
+    {
+        id: 3,
+        title: "Quiz Application",
+        category: "Frontend + Backend",
+        description: "Interactive quiz platform with dynamic questions, scoring system, and backend data handling.",
+        tech: ["React", "Node.js", "MySQL"],
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072",
+        color: "#fbbf24",
+        liveUrl: "https://github.com/NiveshPole18"
+    },
+    {
+        id: 4,
+        title: "Chatbot Frontend",
+        category: "Frontend",
+        description: "AI chatbot interface with smooth UI, API-based message handling, and responsive design.",
+        tech: ["React", "Tailwind", "APIs"],
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2070",
+        color: "#64748b",
+        liveUrl: "https://github.com/NiveshPole18"
+    },
+    {
+        id: 5,
+        title: "E-Commerce Platform",
+        category: "Full Stack",
+        description: "Product listing, cart management, authentication, and order workflow system.",
+        tech: ["React", "Node.js", "MongoDB"],
+        image: "https://images.unsplash.com/photo-1639322537228-ad7117a3a63b?auto=format&fit=crop&q=80&w=2070",
+        color: "#fbbf24",
+        liveUrl: "https://github.com/NiveshPole18"
+    },
+    {
+        id: 6,
+        title: "Dreams",
+        category: "AI Art",
+        description: "Platform for training and minting AI-generated art models on the edge, seamlessly integrated with IPFS.",
+        tech: ["Stable", "WebGL", "Node"],
+        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1965",
+        color: "#94a3b8",
+        liveUrl: "https://github.com/NiveshPole18"
+    }
 ]
+
 
 // Individual Card Component with Scroll Animations
 function ProjectCard({ project, index }) {
@@ -190,8 +197,11 @@ function ProjectCard({ project, index }) {
                         </div>
 
                         {/* View Project Button */}
-                        <motion.button
-                            className="mt-6 md:mt-8 px-6 md:px-8 py-3 md:py-4 rounded-xl text-sm md:text-base font-bold uppercase tracking-widest text-black relative overflow-hidden group/btn"
+                        <motion.a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-6 md:mt-8 px-6 md:px-8 py-3 md:py-4 rounded-xl text-sm md:text-base font-bold uppercase tracking-widest text-black relative overflow-hidden group/btn inline-block"
                             style={{ backgroundColor: project.color }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -215,7 +225,7 @@ function ProjectCard({ project, index }) {
                                 whileHover={{ x: 0 }}
                                 transition={{ duration: 0.3 }}
                             />
-                        </motion.button>
+                        </motion.a>
                     </div>
                 </div>
             </motion.div>
