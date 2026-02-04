@@ -242,21 +242,21 @@ export default function Projects() {
     const [projectsData, setProjectsData] = useState(projects)
     const [loading, setLoading] = useState(true)
 
-    // useEffect(() => {
-    //     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001'
-    //     fetch(`${apiUrl}/api/projects`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data && data.length > 0) {
-    //                 setProjectsData(data)
-    //             }
-    //             setLoading(false)
-    //         })
-    //         .catch(err => {
-    //             console.warn("Server not reached, using local project data:", err)
-    //             setLoading(false)
-    //         })
-    // }, [])
+    useEffect(() => {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+        fetch(`${apiUrl}/api/projects`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    setProjectsData(data)
+                }
+                setLoading(false)
+            })
+            .catch(err => {
+                console.warn("Server not reached, using local project data:", err)
+                setLoading(false)
+            })
+    }, [])
 
     return (
         <section id="projects" className="relative bg-transparent py-16 md:py-32 px-4">
