@@ -49,19 +49,55 @@ const skills = [
         color: "#ED8B00"
     },
     {
-        name: "C++",
-        category: "Backend",
-        image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=2128",
-        logo: "https://cdn.simpleicons.org/cplusplus/00599C",
-        color: "#00599C"
-    },
-    {
         name: "Postman",
         category: "Tools",
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=2070",
         logo: "https://cdn.simpleicons.org/postman/FF6C37",
         color: "#FF6C37"
-    }
+    },
+    {
+    name: "SQL",
+    category: "Database",
+    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=2070",
+    logo: "https://cdn.simpleicons.org/mysql/4479A1",
+    color: "#4479A1"
+},
+{
+    name: "AWS",
+    category: "Cloud",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072",
+    logo: "https://cdn.simpleicons.org/amazonaws/FF9900",
+    color: "#FF9900"
+},
+{
+    name: "Git",
+    category: "Tools",
+    image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&q=80&w=2070",
+    logo: "https://cdn.simpleicons.org/git/F05032",
+    color: "#F05032"
+},
+{
+    name: "Redux Toolkit",
+    category: "Frontend",
+    image: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?auto=format&fit=crop&q=80&w=2070",
+    logo: "https://cdn.simpleicons.org/redux/764ABC",
+    color: "#764ABC"
+},
+{
+    name: "Strapi",
+    category: "Backend",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070",
+    logo: "https://cdn.simpleicons.org/strapi/4945FF",
+    color: "#4945FF"
+},
+{
+    name: "Next.js",
+    category: "Frontend",
+    image: "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?auto=format&fit=crop&q=80&w=2070",
+    logo: "https://cdn.simpleicons.org/nextdotjs/ffffff",
+    color: "#ffffff"
+}
+
 ]
 
 export default function Skills() {
@@ -69,30 +105,36 @@ export default function Skills() {
     const triggerRef = useRef(null)
 
     useEffect(() => {
-        const pin = gsap.fromTo(sectionRef.current,
-            { translateX: 0 },
-            {
-                translateX: "-300vw",
-                ease: "none",
-                duration: 1,
-                scrollTrigger: {
-                    trigger: triggerRef.current,
-                    start: "top top",
-                    end: "2000 top",
-                    scrub: 0.6,
-                    pin: true,
-                }
-            }
-        )
-        return () => {
-            pin.kill()
+    const section = sectionRef.current
+    const trigger = triggerRef.current
+
+    const scrollWidth = section.scrollWidth
+    const viewportWidth = window.innerWidth
+    const scrollDistance = scrollWidth - viewportWidth
+
+    const tween = gsap.to(section, {
+        x: -scrollDistance,
+        ease: "none",
+        scrollTrigger: {
+            trigger: trigger,
+            start: "top top",
+            end: () => `+=${scrollWidth}`,
+            scrub: 0.6,
+            pin: true,
+            anticipatePin: 1
         }
-    }, [])
+    })
+
+    return () => {
+    tween.scrollTrigger?.kill()
+    tween.kill()
+}
+}, [])
 
     return (
         <div id="skills" className="skills-wrapper overflow-hidden bg-transparent mt-0">
             <div ref={triggerRef} className="h-screen w-full flex items-center relative overflow-hidden pt-0">
-                <div ref={sectionRef} className="flex flex-row items-center gap-12 md:gap-20 px-8 md:px-20 w-[400vw]">
+                <div ref={sectionRef} className="flex flex-row items-center gap-12 md:gap-20 px-8 md:px-20 w-max">
 
                     {/* Intro Block */}
                     <div className="w-[90vw] md:w-[80vw] shrink-0 px-4 md:px-10 relative z-10">

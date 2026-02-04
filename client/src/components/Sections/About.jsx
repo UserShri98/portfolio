@@ -113,13 +113,7 @@ export default function About() {
                         >
                             Full Stack
                         </motion.div>
-                        <motion.div
-                            className="px-6 py-2 rounded-full border border-accent-primary/30 bg-accent-primary/10 text-accent-primary text-sm tracking-wide cursor-pointer"
-                            whileHover={{ scale: 1.1, y: -5, boxShadow: "0 10px 30px rgba(251, 191, 36, 0.3)" }}
-                            transition={{ type: "spring", stiffness: 400 }}
-                        >
-                            UI/UX
-                        </motion.div>
+                        
                     </motion.div>
                 </motion.div>
 
@@ -171,44 +165,7 @@ export default function About() {
                 </motion.div>
 
                 {/* --- TIMELINE STATS (Clean Professional) --- */}
-                <div className="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-8 md:mt-12 border-t border-slate-800/50 pt-8 md:pt-12">
-                    {[
-                        { year: '2020', title: 'Started Journey', desc: 'Wrote first code and explored basics.' },
-                        { year: '2022', title: 'Web Focus', desc: 'Learned JS, HTML/CSS, and React.' },
-                        { year: '2023', title: 'MERN Stack', desc: 'Built full-stack MongoDB apps.' },
-                        { year: '2024', title: 'Advanced Full Stack', desc: 'Authentication, APIs & Dashboards.' },
-                        { year: '2025', title: 'M.Tech CSE', desc: 'Pursuing Master\'s and sharpening skills.' }
-                    ].map((item, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.2, duration: 0.6 }}
-                            whileHover={{ y: -10, scale: 1.05 }}
-                            className="group cursor-pointer relative"
-                        >
-                            <motion.div
-                                className="absolute -inset-4 bg-accent-primary/5 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"
-                            />
-                            <div className="relative">
-                                <motion.h3
-                                    className="text-4xl md:text-5xl font-display font-bold text-slate-700 group-hover:text-accent-primary transition-colors duration-300"
-                                    whileHover={{ scale: 1.1 }}
-                                >
-                                    {item.year}
-                                </motion.h3>
-                                <motion.div
-                                    className="h-1 w-12 bg-accent-primary/50 my-4"
-                                    initial={{ width: 48 }}
-                                    whileHover={{ width: 80 }}
-                                    transition={{ duration: 0.3 }}
-                                ></motion.div>
-                                <h4 className="text-lg font-medium text-white mb-1 group-hover:text-accent-primary transition-colors">{item.title}</h4>
-                                <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">{item.desc}</p>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+              
 
                 {/* --- DOWNLOAD RESUME (Premium Call to Action) --- */}
                 <motion.div

@@ -224,14 +224,14 @@ export default function Contact() {
                         whileHover={{ scale: 1.05 }}
                     >
                         <h3 className="font-display font-bold text-2xl text-white">
-                            <span className="text-accent-primary">NP</span>
+                            <span className="text-accent-primary">SC</span>
                         </h3>
                     </motion.div>
                     <div className="flex gap-12 mt-8 md:mt-0">
                         {[
-                            { name: 'GitHub', url: 'https://github.com/NiveshPole18' },
-                            { name: 'LinkedIn', url: 'https://www.linkedin.com/in/nivesh-pole-49b6a4203/' },
-                            { name: 'Email', url: 'mailto:niveshpole2@gmail.com' }
+                            { name: 'GitHub', url: 'https://github.com/UserShri98' },
+                            { name: 'LinkedIn', url: 'http://www.linkedin.com/in/shrinathchikodikar' },
+                            { name: 'Email', url: 'mailto:sjc3098@gmail.com' }
                         ].map((link, i) => (
                             <motion.a
                                 key={link.name}

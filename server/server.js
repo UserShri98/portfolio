@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
+const fs=require("fs")
 
 dotenv.config();
 
@@ -13,56 +14,69 @@ app.use(express.json());
 
 // Mock Data
 const projects = [
-    {
-        id: 1,
-        title: "User Management",
-        category: "Full Stack",
-        description: "Secure system with authentication, role-based access, and full CRUD operations for managing users efficiently.",
-        tech: ["React", "Node.js", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=2070",
-        color: "#3b82f6",
-        liveUrl: "https://github.com/NiveshPole18"
+   {
+         id: 1,
+    title: "DevMeet",
+    category: "Full Stack",
+    description: "A developer collaboration and networking platform with secure APIs, enabling developers to connect, interact, and collaborate efficiently.",
+    tech: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Tailwind CSS",
+        "DaisyUI",
+        "Redux Toolkit"
+    ],
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=2070",
+    color: "#38bdf8",
+    liveUrl: "https://dev-meet-web-2726.vercel.app/"
     },
     {
-        id: 2,
-        title: "Task Manager",
-        category: "Web App",
-        description: "Task tracker that allows users to create, update, delete, and monitor tasks with a clean UI and REST API integration.",
-        tech: ["React", "Express", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=2072",
-        color: "#10b981",
-        liveUrl: "https://github.com/NiveshPole18"
-    },
-    {
-        id: 3,
-        title: "Quiz Application",
-        category: "MERN",
-        description: "Interactive quiz platform with dynamic questions, scoring system, and backend data handling using MySQL.",
-        tech: ["React", "Node.js", "MySQL"],
-        image: "https://images.unsplash.com/photo-1606326666830-a146892303ce?auto=format&fit=crop&q=80&w=2070",
-        color: "#f59e0b",
-        liveUrl: "https://github.com/NiveshPole18"
-    },
-    {
-        id: 4,
-        title: "Chatbot UI",
-        category: "Frontend",
-        description: "AI chatbot interface with smooth UI, API-based message handling, and responsive design.",
-        tech: ["React", "Tailwind", "APIs"],
-        image: "https://images.unsplash.com/photo-1531746790731-6c087fecd05a?auto=format&fit=crop&q=80&w=2012",
-        color: "#6366f1",
-        liveUrl: "https://github.com/NiveshPole18"
-    },
-    {
-        id: 5,
-        title: "E-Commerce",
-        category: "Full Stack",
-        description: "Complete shopping platform with product listing, cart management, authentication, and order workflow.",
-        tech: ["React", "Node.js", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=2070",
-        color: "#9333ea",
-        liveUrl: "https://github.com/NiveshPole18"
-    }
+    id: 2,
+    title: "Blogging Platform",
+    category: "Full Stack",
+    description: "A full-stack blogging platform that allows users to create, edit, and manage blog posts with secure authentication and access control for user-specific content.",
+    tech: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+    ],
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=2070",
+    color: "#22c55e",
+    liveUrl: "https://blog-application-2-rll6.onrender.com/user/signup"
+},
+ {
+    id: 3,
+    title: "GPTFlix",
+    category: "Frontend",
+    description: "An AI-powered movie discovery platform that helps users explore and search movies through intelligent interactions, real-time search, and a responsive, intuitive UI.",
+    tech: [
+        "React.js",
+        "Tailwind CSS",
+        "Firebase"
+    ],
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=2070",
+    color: "#ef4444",
+    liveUrl: "https://gptnet.vercel.app/"
+},
+{
+    id: 4,
+    title: "Food Ordering System",
+    category: "Frontend",
+    description: "A modern food ordering application that allows users to browse restaurants, filter them by ratings, view menus, add items to cart, and place orders with a smooth user experience.",
+    tech: [
+        "React.js",
+        "Tailwind CSS",
+        "Redux Toolkit"
+    ],
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070",
+    color: "#f97316",
+    liveUrl: "https://food-delivery-beta-ten.vercel.app/"
+}
+
+
 ];
 
 // Routes
@@ -79,16 +93,21 @@ app.post('/api/contact', (req, res) => {
     }, 1000);
 });
 
-app.get('/api/resume', (req, res) => {
-    const resumePath = path.join(__dirname, 'resume.pdf');
-    res.download(resumePath, 'Nivesh_Pole_Resume.pdf', (err) => {
-        if (err) {
-            console.error(err);
-            res.status(404).json({ error: "Resume file not found on server." });
-        }
-    });
-});
+app.get("/api/resume", (req, res) => {
+    const resumePath = path.resolve(__dirname, "resume.pdf");
 
+    if (!fs.existsSync(resumePath)) {
+        return res.status(404).json({ error: "Resume file not found" });
+    }
+
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader(
+        "Content-Disposition",
+        'attachment; filename="Chikodikar_Shrinath_Software_Developer_Resume.pdf"'
+    );
+
+    res.sendFile(resumePath);
+});
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

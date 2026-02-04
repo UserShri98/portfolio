@@ -33,7 +33,7 @@ export default function Intro() {
                     className="relative"
                 >
                     <h1 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-mono text-accent-primary tracking-[0.3em] md:tracking-[0.4em] uppercase mb-4 md:mb-6">
-                        Software Engineer
+                        Software Developer
                     </h1>
                     <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-display font-bold text-slate-100 leading-[0.85] uppercase">
                         Creative <br />
