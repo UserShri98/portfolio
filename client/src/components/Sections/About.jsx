@@ -168,15 +168,15 @@ export default function About() {
               
 
                 {/* --- DOWNLOAD RESUME (Premium Call to Action) --- */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                     className="col-span-1 md:col-span-3 flex justify-center mt-20"
                 >
                     <motion.a
-                        href={`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/resume`}
-                        download
+                        href="/resume.pdf"
+                        download="Chikodikar_Shrinath_Software_Developer_Resume.pdf"
                         className="group relative px-12 py-5 bg-white/5 border border-white/10 rounded-full text-white font-display font-bold uppercase tracking-widest overflow-hidden flex items-center gap-4 transition-all hover:border-accent-primary/50"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -186,14 +186,13 @@ export default function About() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         </div>
 
-                        {/* Shimmer Effect */}
                         <motion.div
                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
                             animate={{ x: ["100%", "-100%"] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                         />
                     </motion.a>
-                </motion.div>
+                </motion.div> */}
 
             </div>
         </section>
